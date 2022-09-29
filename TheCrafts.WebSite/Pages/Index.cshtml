@@ -10,15 +10,17 @@
 </div>
 
 
- <div class="row">
-    @foreach (var product in Model.Products){
-        <div class="card">
-            <div class="card-img" style="background-image: url('@product.Image')"></div>
-                <div class="card-body">
-                    <h5 class=" card-title">@product.Title</h5>
-                </div>
-            
- </div>
-    }
-   
+<div class="container">
+     <div class="card-columns row row-cols-3">
+        @foreach (var product in Model.Products){
+            <div class="card">
+                <div class="card-img" style="background-image: url('@product.Image')"></div>
+                    <div class="card-body">
+                        <h5 class=" card-title">@product.Title</h5>
+                    </div>
+            </div>
+
+        }
+    </div>
+</div>
 </>
