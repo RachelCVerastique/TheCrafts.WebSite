@@ -20,7 +20,7 @@ namespace TheCrafts.WebSite.Services
 
         private string JsonFileName
         {
-            get { return Path.Combine(WebHostEnvironment.WebRootPath, "data", "products.txt"); }
+            get { return Path.Combine(WebHostEnvironment.WebRootPath, "data", "products.json"); }
         }
 
         public IEnumerable<Product> GetProducts()

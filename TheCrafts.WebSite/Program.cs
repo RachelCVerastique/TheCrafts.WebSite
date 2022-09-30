@@ -25,14 +25,19 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapRazorPages();
-app.MapGet("/products", (context) =>
+app.UseEndpoints(endpoints =>
 {
-    var products = app.GetService<JsonFileProductService>().GetProducts();
-    var json = JsonSerializer.Serialize<IEnumerable<Product>>(products);
-    return context.Response.WriteAsync(json);
-   
+    endpoints.MapRazorPages();
+    endpoints.MapGet("/products", (context) =>
+    {
+        var products = app.Services.GetService<JsonFileProductService>().GetProducts();
+        var json = JsonSerializer.Serialize<IEnumerable<Product>>(products);
+        context.Response.ContentType = "application/json";
+        return context.Response.WriteAsync(json);
+
+    });
 });
+
     
 
 app.Run();
